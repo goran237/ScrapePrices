@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.*;
 
-public class PriceParser {
+public class StringParser {
 
     public static SingleAd parseAd(String text) {
         Integer price;
@@ -120,6 +120,20 @@ public class PriceParser {
             return gearboxValue;
         } else {
             return SingleAd.Gearbox.MANUAL;
+        }
+    }
+
+    public static Integer parseNumberOfPages(String pageNumberContainer) {
+        String numberOfPages;
+        Integer numberOfPagesValue;
+        Pattern patternPages = Pattern.compile("[u][k][u][p][n][o]\\s\\d*");
+        Matcher matcherPages = patternPages.matcher(pageNumberContainer);
+        if (matcherPages.find()) {
+            numberOfPages = matcherPages.group(0);
+            numberOfPagesValue = Integer.valueOf(numberOfPages.trim().substring(7));
+            return numberOfPagesValue;
+        } else {
+            return 0;
         }
     }
 
