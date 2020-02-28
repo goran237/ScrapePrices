@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DataWriter {
 
-    public static void writeToFile(List<String> listOfAds) throws IOException {
-        String fileName = "Series_1_price_" + LocalDate.now() + ".csv";
+    public static void writeToFile(List<String> listOfAds, String brand, String model) throws IOException {
+        String fileName = brand + "_" + model + "_" + LocalDate.now() + ".csv";
         FileWriter csvWriter = new FileWriter(fileName);
         csvWriter.append("Price");
         csvWriter.append(",");
